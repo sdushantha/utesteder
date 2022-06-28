@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+</style> 
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Comfortaa', cursive;
+}
+
+#myInput {
+  width: 100%;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  border-radius: 5px;
+  font-size: 3.5vw;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 3.5vw;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+</style>
+</head>
+<body>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Søk etter utested...">
+
+<table id="myTable">
+  <tr>
+    <td>
+        Heidi's Bier Bar
+        &nbsp
+        <a href="https://www.facebook.com/heidiskristiansand"><i class="fa fa-brands fa-facebook-square"></i></a>
+    </td>
+    <td>20 år (18 år på Torsdager)</td>
+  </tr>
+  <tr>
+    <td>
+        Vaktbua
+        &nbsp
+        <a href="https://www.facebook.com/vaktbua/"><i class="fa fa-brands fa-facebook-square"></i></a>
+    </td>
+    <td>20 år aldersgrense kveld (18 år på konserter)</td>
+  </tr>
+  <tr>
+    <td>
+        Victoria pub
+        &nbsp
+        <a href="https://victoriapub.no/"><i class="fa fa-solid fa-link"></i></a>
+    </td>
+    <td>20 år</td>
+  </tr>
+  <tr>
+    <td>
+        Bakgården Bar
+        &nbsp
+        <a href="https://www.bakgardenbar.no"><i class="fa fa-solid fa-link"></i></a>
+    </td>
+    <td>20 år</td>
+  </tr>
+  <tr>
+    <td>
+        Harvey's American Sportsbar
+        &nbsp
+        <a href="https://www.facebook.com/harveyskrs/"><i class="fa fa-brands fa-facebook-square"></i></a>
+    </td>
+    <td>20 år</td>
+  </tr>
+  <tr>
+    <td>
+        Kombinat
+        &nbsp
+        <a href="https://www.facebook.com/kombinat.kristiansand/"><i class="fa fa-brands fa-facebook-square"></i></a>
+    </td>
+    <td>18 år</td>
+  </tr>
+  <tr>
+    <td>
+        Patricks Pub
+        &nbsp
+        <a href="https://www.facebook.com/PatricksKristiansand/"><i class="fa fa-brands fa-facebook-square"></i></a>
+    </td>
+    <td>20 år (18 år helt til 22:00)</td>
+  </tr>
+  <tr>
+    <td>
+        DIS
+        &nbsp
+        <a href="https://www.facebook.com/Disnattklubb/"><i class="fa fa-brands fa-facebook-square"></i></a>
+    </td>
+    <td>18 år</td>
+  </tr>
+  <tr>
+    <td>
+        Skybar Caledonien (Club21)
+        &nbsp
+        <a href="https://www.facebook.com/club21caledonien"><i class="fa fa-brands fa-facebook-square"></i></a>
+    </td>
+    <td>20 år</td>
+  </tr>
+  <tr>
+    <td>
+        XO Pub AS
+        &nbsp
+        <a href="https://www.facebook.com/xo-pub-491528547995920/"><i class="fa fa-brands fa-facebook-square"></i></a>
+    </td>
+    <td>20 år</td>
+  </tr>
+  <tr>
+    <td>
+        Vertshuset Høllen Brygge
+        &nbsp
+        <a href="https://www.facebook.com/vertshusethollen/"><i class="fa fa-brands fa-facebook-square"></i></a>
+    </td>
+    <td>20 år</td>
+  </tr>
+  <tr>
+    <td>
+        Filosofen
+        &nbsp
+        <a href="https://www.facebook.com/Filosofen-Pub-104772481852264/"><i class="fa fa-brands fa-facebook-square"></i></a>
+    </td>
+    <td>20 år</td>
+  </tr>
+  <tr>
+    <td>
+        Øl Hallen
+        &nbsp
+        <a href="https://www.facebook.com/OlhallenKrs/"><i class="fa fa-brands fa-facebook-square"></i></a>
+    </td>
+    <td>20 år</td>
+  </tr>
+  <tr>
+    <td>
+        KICK Nattklubb & Scene
+        &nbsp
+        <a href="https://www.facebook.com/KICK.Nattklubb.Scene/"><i class="fa fa-brands fa-facebook-square"></i></a>
+    </td>
+    <td>18 og 20 år Avhengig av arrangement</td>
+  </tr>
+</table>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  var rows = table.getElementsByTagName("tr");
+  for (i = 0; i < rows.length; i++) {
+    var cells = rows[i].getElementsByTagName("td");
+    var j;
+    var rowContainsFilter = false;
+    for (j = 0; j < cells.length; j++) {
+      if (cells[j]) {
+        if (cells[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+          rowContainsFilter = true;
+          continue;
+        }
+      }
+    }
+
+    if (! rowContainsFilter) {
+      rows[i].style.display = "none";
+    } else {
+      rows[i].style.display = "";
+    }
+  }
+}
+</script>
+
+</body>
+</html>
